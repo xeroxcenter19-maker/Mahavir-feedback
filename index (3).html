@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - Mahavir Xerox and Stationery</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #e9eef5);
+      color: #222;
+    }
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 25px;
+    }
+    .shop {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .address {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+    .question {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 18px 0 14px;
+    }
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin: 12px 0 22px;
+    }
+    .star {
+      border: 0;
+      background: transparent;
+      font-size: 43px;
+      cursor: pointer;
+      color: #c9c9c9;
+      padding: 0 2px;
+      transition: transform .15s, color .15s;
+    }
+    .star:hover, .star.selected {
+      color: #f5b301;
+      transform: scale(1.08);
+    }
+    .review-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 10px;
+      background: #4285f4;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+    .review-btn:hover { background: #3367d6; }
+    .message {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+    .phone {
+      display: block;
+      margin-top: 16px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .hidden { display: none; }
+    footer {
+      margin-top: 22px;
+      color: #888;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🙏 તમારો Feedback આપો</h1>
+    <div class="shop">Mahavir Xerox and Stationery</div>
+    <div class="address">
+      LL-2, Murlidhar Complex, Surendra Mangaldas Rd,<br>
+      beside Sunphoto, Patel Colony, Ambawadi,<br>
+      Ahmedabad, Gujarat 380015
+    </div>
+
+    <div id="ratingSection">
+      <div class="question">અમારી Service તમને કેવી લાગી?</div>
+
+      <div class="stars" aria-label="Rate our service from 1 to 5 stars">
+        <button class="star" data-rating="1" aria-label="1 star">★</button>
+        <button class="star" data-rating="2" aria-label="2 stars">★</button>
+        <button class="star" data-rating="3" aria-label="3 stars">★</button>
+        <button class="star" data-rating="4" aria-label="4 stars">★</button>
+        <button class="star" data-rating="5" aria-label="5 stars">★</button>
+      </div>
+
+      <div id="result" class="hidden">
+        <a
+          class="review-btn"
+          href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJ9W8tMRqFXjkRwuX0TX4B9WE"
+          target="_blank"
+          rel="noopener noreferrer">
+          ⭐ Google પર Review આપો
+        </a>
+        <div class="message">
+          તમારો સાચો Feedback અમારા માટે ખૂબ મહત્વનો છે. 🙏
+        </div>
+      </div>
+    </div>
+
+    <a class="phone" href="tel:9033222386">📞 9033222386</a>
+
+    <footer>Thank you for visiting Mahavir Xerox and Stationery</footer>
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('.star');
+    const result = document.getElementById('result');
+
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        stars.forEach((s, i) => {
+          s.classList.toggle('selected', i <= index);
+        });
+        result.classList.remove('hidden');
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  </script>
+</body>
+</html>
