@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Mahavir Xerox and Stationery</title>
+    <style>
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+        body { background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 15px; }
+        .card { background: #fff; padding: 30px 20px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.08); max-width: 420px; width: 100%; text-align: center; }
+        h2 { color: #003B95; margin: 0 0 10px; font-size: 22px; }
+        p { color: #555; font-size: 15px; margin: 0 0 20px; line-height: 1.4; }
+        .stars { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .star-btn { font-size: 38px; background: none; border: none; cursor: pointer; transition: transform .15s ease; padding: 0; outline: none; }
+        .star-btn:hover, .star-btn:active { transform: scale(1.25); }
+        .hidden { display: none; }
+        .submit-btn { background: #003B95; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; width: 100%; }
+        .thankyou { color: #2e7d32; font-weight: 600; font-size: 16px; }
+        .review-btn { display: inline-block; background: #003B95; color: #fff; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; margin-top: 5px; }
+        .selected { font-size: 14px; color: #555; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>Mahavir Xerox and Stationery</h2>
+    <p>Amari service mate tamaro anubhav share karo:</p>
+
+    <div id="rating-step">
+        <div class="stars">
+            <button class="star-btn" aria-label="1 Star" onclick="handleRating(1)">⭐</button>
+            <button class="star-btn" aria-label="2 Stars" onclick="handleRating(2)">⭐</button>
+            <button class="star-btn" aria-label="3 Stars" onclick="handleRating(3)">⭐</button>
+            <button class="star-btn" aria-label="4 Stars" onclick="handleRating(4)">⭐</button>
+            <button class="star-btn" aria-label="5 Stars" onclick="handleRating(5)">⭐</button>
+        </div>
+        <span style="font-size:13px;color:#888;">Rating pasand karo (1 thi 5 Star)</span>
+    </div>
+
+    <div id="feedback-step" class="hidden">
+        <p class="selected" id="selected-rating"></p>
+        <p style="color:#003B95;font-weight:600;margin-bottom:12px;">Tamaro feedback aapo:</p>
+        <button class="submit-btn" onclick="openGoogleReview()">Google par Review Aapo</button>
+    </div>
+
+    <div id="thankyou-step" class="hidden">
+        <p class="thankyou">Tamaro aabhar! Tamaro feedback amara mate mahatvapurna che.</p>
+    </div>
+</div>
+
+<script>
+    // Replace this with your actual Google Business review URL if available.
+    const GOOGLE_REVIEW_URL =
+        "https://www.google.com/search?q=Mahavir+Xerox+and+Stationery+Ambawadi+Ahmedabad";
+
+    function handleRating(stars) {
+        document.getElementById("rating-step").classList.add("hidden");
+        document.getElementById("feedback-step").classList.remove("hidden");
+        document.getElementById("selected-rating").textContent =
+            "Tame " + stars + " Star rating pasand kari che.";
+    }
+
+    function openGoogleReview() {
+        window.open(GOOGLE_REVIEW_URL, "_blank", "noopener,noreferrer");
+        document.getElementById("feedback-step").classList.add("hidden");
+        document.getElementById("thankyou-step").classList.remove("hidden");
+    }
+</script>
+</body>
+</html>
